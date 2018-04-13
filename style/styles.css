@@ -1,0 +1,925 @@
+@charset "UTF-8";
+/* CSS Document */
+/* index
+================================================== */
+/* 
+Resets
+body
+typography
+links
+#headersect
+#aboutSect
+#workSect
+#contactSect
+#Viemo videos' styles
+#adminSect
+Media Quries
+*/
+/* #Reset & Basics (Inspired by E. Meyers)
+================================================== */
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline; }
+
+article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {
+  display: block; }
+
+body {
+  line-height: 1; }
+
+ol, ul {
+  list-style: none; }
+
+blockquote, q {
+  quotes: none; }
+
+blockquote:before, blockquote:after,
+q:before, q:after {
+  content: '';
+  content: none; }
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0; }
+
+/* #Basic Styles
+================================================== */
+body {
+  background: #800000;
+  font-size: 16px;
+  font-family: "futura-pt",sans-serif;
+  line-height: 2;
+  letter-spacing: 1px;
+  color: #000000;
+  -webkit-font-smoothing: antialiased;
+  /* Fix for webkit rendering */
+  -webkit-text-size-adjust: 100%; }
+  
+/* making preloader screen */  
+#loadSect{
+ 	position: fixed;
+	display: block;
+	top: 0;    /* making preloader cover all screen */
+	right: 0;
+	left: 0;
+	bottom: 0;
+	height:100vh;
+	background-color:#800000; 
+	z-index:99; /* must be the highest number of all others to cover them all */
+	  }
+	  
+/* making preloader screen's logo*/ 
+.PreLoadLogo{
+	  position:absolute;
+	  left:0;
+	  top:0;
+	  display: flex;
+	  align-items:center;
+	  justify-content: center;
+	  height:100vh;
+	  }
+	  
+		/* making preloader screen's logo image */ 
+	  .PreLoadLogo img{
+		  width:50%;
+		  transition:all 3s ease-in-out;
+		  -webkit-animation-name: load; /* Safari 4.0 - 8.0 */
+		  -webkit-animation-duration: 4s; /* Safari 4.0 - 8.0 */
+		  animation-name: load;
+		  animation-duration: 3s;
+		  -webkit-animation-iteration-count:infinite;
+		  -webkit-animation-delay:.2s;
+		  animation-iteration-count:infinite;
+		  animation-delay:.2s;			
+		  }
+		  
+		  /* animation */
+		  @keyframes load {
+				0%   {transform:scale(0,0); opacity:1;}
+				100% {transform:scale(4,4); opacity:0;}
+			}
+
+/* #Typography
+================================================== */
+h1, h2, h3, h4, h5, h6 {
+  color:#000000;
+  font-weight: bold;
+  font-family: 'Montserrat', sans-serif;
+ }
+
+h1 {
+  font-size: 60px;
+  line-height: 1.1; }
+
+h2 {
+  font-size: 48px;
+  line-height: 1.2; }
+
+h3 {
+  font-size: 36px;
+  line-height: 1.3; }
+
+h4 {
+  font-size: 24px;
+  line-height: 1.4; }
+
+h5 {
+  font-size: 21px;
+  line-height: 1.5; }
+
+h6 {
+  font-size: 18px;
+  line-height: 1.6; }
+
+p {
+  margin: 0 0 20px 0; }
+
+em {
+  font-style: italic; }
+
+strong {
+  font-weight: bold; }
+
+hr {
+  border: solid #000000;
+  border-width: 1px 0 0;
+  clear: both;
+  margin: 10px 0 30px;
+  height: 0; }
+
+/* #Links
+================================================== */
+a {
+  color:#ffffff;
+  text-decoration:none;
+  outline: 0; }
+  
+/* link mouse over */
+a:hover, a:focus {
+  color: #000; }
+
+/* styles for html body  */
+body {
+  background-image:rgba(128,0,0,1);
+  min-height: 100vh;/* min-height is window's height*/
+  max-height:100%;
+  }
+/* headerSect
+================================================== */  	
+  #headerSect{
+	  /* set position's styles*/
+ 	  position:relative;
+	  top:0;
+	  left:0;
+	  z-index:0;
+	  overflow-x: hidden; /* Disable horizontal scroll */		
+	  height:100%;
+	  width:100%;
+	  min-height:100vh;
+	  overflow:hidden;
+	  }
+	  
+	  /* reddish screen over video*/
+	  #red{
+		/* set position's styles*/
+		position:absolute;
+		top:0;
+		left:0;
+		z-index:0;
+		width:100%;
+		min-height:100%;
+		background-color: rgb(0,0,0); /* Black fallback color */
+		background-color: rgba(128,0,0, .3); /* Black w/opacity */
+		}
+		  
+	/* background video player*/  
+	#videohead{		
+		backface-visibility:hidden;
+		background:url(../assests/images/background.jpg) no-repeat scroll 0 0 #000;
+		background-size:cover;
+		min-height:100%;
+		min-width:100%;
+		width:auto;
+		height:auto;
+		position:absolute;
+		top:0;
+		bottom:0;
+		right:0;
+		left:0;
+		transition:all ease-in-out 1s;
+		}
+		
+   /* headerSect logo*/		
+  .logo{
+	  	/* set position's styles*/
+	      position:absolute;
+		  left:0;
+		  top:0;
+		  display: flex;
+		  align-items:center;
+		  justify-content: center;
+	      flex-direction: column;
+		  height:100vh;
+		  margin:auto;
+		  width:100%;
+		  }
+		  .logo img{
+			  width:50%;
+			  }
+			  /* transition of logo*/
+			  .logo-show{
+				  position:absolute;
+				  display:none;
+				  left:-150px;
+				  top:-160px;
+				  width:1000px;
+							
+				  }
+				  .logo-show img{
+					  width:800px;
+					  margin:auto;
+					  }
+					  
+			/*play button of background video*/		  
+			.btn-play{
+				border:1px solid rgba(128,0,0,.9);
+				background-color:rgba(128,0,0,.9);
+				padding:10px 40px;
+				font-size:16px;
+				color:#000000;
+				z-index:1;
+				}
+				.btn-play:hover{
+					border:1px solid rgba(0,0,0,1);
+					background-color:rgba(0,0,0,1);
+					color:#800000;
+					cursor:pointer;
+					}
+					
+  /* styles video control button*/		  
+  .videoControl{
+			list-style-type:none;
+			}
+		.videoControl li{
+			float:right;
+			margin:30px;
+			display:inline-block;
+			cursor:pointer;
+			margin-left:10px;
+			font-size:30px;
+			color:rgba(128,0,0,1);
+			}
+			
+		/* slider navigation*/	
+		.nav {
+			position:absolute;
+			bottom:30px;
+			width:100%;
+			list-style-type:none;
+	  		display: flex;
+	  		align-items: center;
+	  		justify-content: center;
+			}	
+			.nav li{
+				display:inline-block;
+				margin:10px;
+				}
+				
+				/* silder's controls styles*/
+				#show1, #show2{
+					width:20px;
+					height:20px;
+					border-radius:50%;
+					cursor:pointer;
+					border:1px solid rgba(128,0,0,1);
+					}
+					#show1{
+						background-color:#800000;
+						}
+					#show1:hover{
+						background-color:#800000;
+						}
+					#show2:hover{
+						background-color:#800000;
+						}
+						
+				/* companyinfo- side nav*/	
+				#home-side{					
+					cursor:pointer;
+					position:fixed;
+					left:0;
+					top:20%;
+					perspective:200;
+  					perspective-origin: calc(100% - 53px);	/*Set the perspective of the origin to center*/				
+					}
+					
+					/* companyinfo- side nav's detail*/
+					#para1{
+						text-align:center;
+						text-transform: uppercase;
+						font-size: 16px;
+						height: 50px;
+						line-height: 50px;
+						background-color:#000000;
+						padding: 0 20px;
+						border:0px solid #000000;
+						color:red;
+						display:inline-block;
+						transform:rotateY(90deg);/* rotate 90 to amke it striaght for 3d look*/
+						transform-origin: left;/* set origin of rotation*/
+						transition: 600ms transform ease-in-out;
+						}
+						
+					/* companyinfo's icon styles*/	
+					#home-side span{
+					 font-size: 16px;
+  					display:inline-block;
+					text-align:center;
+					background-color:rgba(128,0,0,1);
+					padding:15px 30px 17px 30px;
+					border:1px solid rgba(128,0,0,1);
+					color:#000000;
+						} 
+					#home-side:hover #para1
+					{
+						transform:rotateY(0deg);/*on mouse over bring it to 0deg*/						
+						}
+						
+				/* work videos- side nav*/				
+				#work-side{
+					cursor:pointer;
+					position:fixed;
+					left:0;
+					top:40%;
+					perspective:200;
+  					perspective-origin: calc(100% - 53px);					
+					}
+					
+					/* work videos- side nav's detail*/
+					#para2{
+					  text-align:center;
+					  background-color:#000000;
+					  text-transform: uppercase;
+					  font-size: 16px;
+					  height: 50px;
+					  line-height: 50px;
+					  padding:0 20px;
+					  border:0px solid #000000;
+					  color:red;
+					  display:inline-block;
+					  transform:rotateY(90deg);
+					  transform-origin: left;
+					  transition: 600ms transform ease-in-out;
+					  }
+					  
+					  /* work videos- side nav's icon*/
+					  #work-side span{
+					  font-size: 16px;
+					  display:inline-block;
+					  text-align:center;
+					  background-color:rgba(128,0,0,1);
+					  padding:15px 30px 17px 30px;
+					  border:1px solid rgba(128,0,0,1);
+					  color:#000000;
+						  } 
+						#work-side:hover #para2
+						{
+							transform:rotateY(0deg);						  
+							}
+				
+				/* contact side navl*/					
+				#contact-side{
+					cursor:pointer;
+					position:fixed;
+					left:0;
+					top:60%;
+					perspective:200;
+  					perspective-origin: calc(100% - 53px);					
+					}
+										
+					/* contact- side nav's detail*/
+					#para3{
+					  text-align:center;
+					  text-transform: uppercase;
+					  font-size: 16px;
+					  height: 50px;
+					  line-height: 50px;
+					  background-color:#000000;
+					  padding:0 20px;
+					  border:0px solid #000000;
+					  color:red;
+					  display:inline-block;
+					  transform:rotateY(90deg);
+					  transform-origin: left;
+					  transition: 600ms transform ease-in-out;
+					  }	
+					  				  
+					  /* contact- side nav's icon*/
+					  #contact-side span{
+					  font-size: 16px;
+					  display:inline-block;
+					  text-align:center;
+					  background-color:rgba(128,0,0,1);
+					  padding:15px 30px 17px 30px;
+					  border:1px solid rgba(128,0,0,1);
+					  color:#000000;
+						  } 
+						#contact-side:hover #para3
+						{
+							transform:rotateY(0deg);}
+		
+				/* login side navl*/					
+				#login-side{
+					cursor:pointer;
+					position:fixed;
+					left:0;
+					top:80%;
+					perspective:200;
+  					perspective-origin: calc(100% - 53px);					
+					}
+										
+					/* contact- side nav's detail*/
+					#para4{
+					  text-align:center;
+					  text-transform: uppercase;
+					  font-size: 16px;
+					  height: 50px;
+					  line-height: 50px;
+					  background-color:#000000;
+					  padding:0 20px;
+					  border:0px solid #000000;
+					  color:red;
+					  display:inline-block;
+					  transform:rotateY(90deg);
+					  transform-origin: left;
+					  transition: 600ms transform ease-in-out;
+					  }	
+					  				  
+					  /* contact- side nav's icon*/
+					  #login-side span{
+					  font-size: 16px;
+					  display:inline-block;
+					  text-align:center;
+					  background-color:rgba(128,0,0,1);
+					  padding:15px 30px 17px 30px;
+					  border:1px solid rgba(128,0,0,1);
+					  color:#000000;
+						  } 
+						#login-side:hover #para4
+						{
+							transform:rotateY(0deg);
+						}
+	
+	/* iframe player for video*/						
+	#Openplayer{
+	  height:100%;
+	  width:100%;
+	  min-height:100vh;
+ 	  position:fixed;
+	  transform:scale(0,0);
+      transition: all 0.5s  ease-in-out; /* 0.5 second transition effect to slide in or slide down the overlay (height or width, depending on reveal) */
+	  top:0;
+	  left:0;
+	  z-index:2;
+	  overflow-x: hidden; /* Disable horizontal scroll */
+	  transition: 0.5s; /* 0.5 second transition effect to slide in or slide down the overlay (height or width, depending on reveal) */
+	  display:flex;
+	  align-items: center;
+	  justify-content: center;
+	  flex-direction: column;
+	  background-repeat:no-repeat;
+	  background-color: rgb(0,0,0); /* Black fallback color */
+	  background-color: rgba(128,0,0, 0.9); /* Black w/opacity */
+	  border:0px; }
+	  
+	  /*exit of header player*/		
+	  #exit1 {
+		  position:absolute;
+		  top:5px;
+		  right:5px;
+		  cursor:pointer;
+		  font-size:22px;
+		  color:#000000;
+		  transition:all 0.5s cubic-bezier(1,.01,.01,.99);
+		  }										
+													
+/* about Sect
+================================================== */		  
+  #aboutSect{		
+	  height:100%;
+	  width:0;
+	  min-height:100vh;
+ 	  position:fixed;
+      transition: all 0.5s ease-in-out; /* 0.5 second transition effect to slide in or slide down the overlay (height or width, depending on reveal) */
+	  top:0;
+	  left:0;
+	  z-index:2;
+	  overflow-x: hidden; /* Disable horizontal scroll */
+	  transition: 0.5s; /* 0.5 second transition effect to slide in or slide down the overlay (height or width, depending on reveal) */
+	  display:flex;
+	  align-items: center;
+	  justify-content: center;
+	  background:url(../assests/images/trees.jpg);
+	  background-position:center;
+	  background-size:cover;
+	  background-repeat:no-repeat;
+	  background-color: rgb(0,0,0); /* Black fallback color */
+	  background-color: rgba(128,0,0, 0.9); /* Black w/opacity */
+	  border:0px; 
+	  }
+		  .des-logo img{
+			  width:50%;
+			  }
+		
+	  /*exits options*/	
+	  #exit {
+		  position:absolute;
+		  top:5px;
+		  z-index:3;
+		  right:5px;
+		  cursor:pointer;
+		  font-size:22px;
+		  color:#000000;
+		  transition:all 0.5s cubic-bezier(1,.01,.01,.99);
+		  }
+		  
+	   /*company's intro*/	  
+	  .intro{
+			  display: flex;
+			  flex-direction: column;
+			  margin:auto; 
+			  text-align:center;
+			  position:relative;
+			  width:90%;
+			  margin:auto;
+			  transition: all 2s ease-in-out;
+			}
+			  .des-logo{
+				  opacity:0;
+			  	  transition: all 2s ease-in-out;
+				  transform:translateY(-50px);
+				  }
+				.show {
+				  opacity:1;
+				  transform: translateY(0px);
+				  }	
+			.intro h1{
+				margin-bottom:15px;
+				}
+				.row{
+			  		display: flex;
+			  		flex-direction:row;
+	  				justify-content: center;/*centre contents*/	
+					width:100%;
+					margin:auto;
+					margin-top:10px;
+					}
+					
+			  /*company's services styles*/		
+			  .service {
+				font-size:60px;
+				margin: 0 200px;
+				opacity: 0;
+				transform: translateY(50px);
+				transition: all 2s ease-in-out;
+				cursor: pointer; 
+				}
+				.service img{
+					border:5px solid #000000;
+					border-radius:50%;
+					}
+				.is-showing {
+				  opacity: 1;
+				  transform: translateY(0px);
+				  }
+/* workSect
+================================================== */	
+	#workSect{		
+	  height:100%;
+	  width:0;
+	  margin:0px;
+	  padding-top:40px;
+	  min-height:100vh;
+ 	  position:fixed;
+      transition: all 0.5s cubic-bezier(1,.01,.01,.99); /* 0.5 second transition effect to slide in or slide down the overlay (height or width, depending on reveal) */
+	  top:0px;
+	  left:0;
+	  z-index:2;
+	  overflow-x: hidden; /* Disable horizontal scroll */
+	  transition: 0.3s; /* 0.5 second transition effect to slide in or slide down the overlay (height or width, depending on reveal) */
+	  background-color: rgba(128,0,0, 0.9); /* Black w/opacity */
+	  border:0px;
+	  overflow-y:visible;
+	  background:url(../assests/images/trees-on-a-hill.jpg);
+	  background-position:center;
+	  background-size:cover;
+	  background-repeat:no-repeat;
+	  text-align:center;
+	  }
+	   #workSect h4{
+	  	color:#ffffff;
+		  }
+		  
+	  /*workSect's logo styles*/		  	
+	  .work-logo{
+		  width:100%;
+		  display:flex;
+		  align-items: center;
+		  justify-content: center;
+		  transform:translateY(-50px);
+		  transition:all 1s ease-in-out;
+		  opacity:0;
+		  }
+		.work-logo img{
+			width:30%;			
+			}
+			.worklogoShow{
+				opacity:1;
+				transform:translateY(0px);
+				}
+				
+	  /*exit of workSect*/		
+	  #exit4 {
+		  position:absolute;
+		  top:5px;
+		  right:5px;
+		  cursor:pointer;
+		  font-size:22px;
+		  color:#000000;
+		  transition:all 0.5s cubic-bezier(1,.01,.01,.99);
+		  }
+		  .works{
+				  opacity:0;
+			  	  transition: all 2s ease-in-out;
+				  transform:translateX(-50px);
+				  }
+				.showWorks {
+				  opacity:1;
+				  transform: translateX(0px);
+				  }
+				  
+			/*load more option's stlyes*/		  
+			.more{
+				cursor:pointer;
+				font-weight:bolder;
+				color:#ffffff;
+				}	  	
+		  
+/* contactSect
+================================================== */		  
+				  
+	#contactSect{		
+	  height:100%;
+	  width:0;
+	  margin:0px;
+	  min-height:100vh;
+ 	  position:fixed;
+      transition: all 0.5s cubic-bezier(1,.01,.01,.99); /* 0.5 second transition effect to slide in or slide down the overlay (height or width, depending on reveal) */
+	  top:0px;
+	  left:0;
+	  z-index:2;
+	  overflow-x: hidden; /* Disable horizontal scroll */
+	  transition: 0.5s; /* 0.5 second transition effect to slide in or slide down the overlay (height or width, depending on reveal) */
+	  background-color: rgba(128,0,0, 0.9); /* Black w/opacity */
+	  border:0px;
+	  display:flex;
+	  align-items: center;
+	  justify-content: center;
+	  flex-direction: column;
+	  overflow:hidden;
+	  }	
+			
+	  #exit3 {
+		  position:absolute;
+		  top:5px;
+		  right:5px;
+		  cursor:pointer;
+		  font-size:22px;
+		  color:#000000;
+		  transition:all 0.5s cubic-bezier(1,.01,.01,.99);
+		  }
+		  
+		  /*welcome loader's styles*/	
+		  .loader {
+				  margin: 5px  auto;
+				  text-align:center;
+				  width: 350px;
+				  color: RGBA(128,0,0,1);
+				  font-family: "Roboto Condensed", sans-serif;
+				  font-size: 250%;
+				  background: linear-gradient(180deg, #000000 0, #000000 100%);
+				  box-shadow: inset 0 5px 20px black;
+				  text-shadow: 5px 5px 5px rgba(0,0,0,0.3);
+				}
+				
+				.loader:after {
+				  content: "";
+				  display: table;
+				  clear: both;
+				}
+				
+				.loader span {
+				  float: left;
+				  height: 100px;
+				  line-height: 120px;
+				  width: 50px;
+				}
+				
+				.loader > span {
+				  border-left: 1px solid RGBA(128,0,0,1);
+				  border-right: 1px solid RGBA(128,0,0,1);
+				}
+				
+				/*cover blocks on welcome*/	
+				.covers {
+				  position: absolute;
+				  height: 100%;
+				  width: 100%;
+				}
+				
+				.covers span {
+				  background: linear-gradient(180deg, RGBA(128,0,0,1) 0, BLACK 100%);
+				  animation: up 2s infinite;
+				}
+				
+				/*welcome's loader animation's keyframe*/	
+				@keyframes up {
+				  0%   { margin-bottom: 0; }
+				  16%  { margin-bottom: 100%; height: 20px; }
+				  50% { margin-bottom: 0; }
+				  100% { margin-bottom: 0; }
+				}
+				
+				/*covers' blocks animation*/	
+				.covers span:nth-child(2) { animation-delay: .142857s; }
+				.covers span:nth-child(3) { animation-delay: .285714s; }
+				.covers span:nth-child(4) { animation-delay: .428571s; }
+				.covers span:nth-child(5) { animation-delay: .571428s; }
+				.covers span:nth-child(6) { animation-delay: .714285s; }
+				.covers span:nth-child(7) { animation-delay: .857142s; }
+				
+		/*contact's logo*/	
+		.contact-logo{
+			  width:100%;
+			  display:flex;
+			  align-items: center;
+			  justify-content: center;
+			  }
+			.contact-logo img{
+				width:60%;			
+				}
+				
+		  /*contact details*/		
+		  #contactDetail{
+			  text-align:center;
+			  font-size:16px;
+				  color:#000000;
+			  }
+			  
+			  /*contact's section social media icons*/	 
+			  .contact-nav{
+				  list-style-type:none;
+				  display:inline-block;
+				  }
+				  .contact-nav li{
+					  display:inline-block;
+				  	  font-size:25px;
+					  margin:10px;
+				  		color:#000000;
+					  }
+					  
+				  .contact-nav li i{
+				  		color:#000000;
+					  }
+/* viemo player
+================================================== */
+	#workPlayer{
+	  height:100%;
+	  width:0;
+	  min-height:100vh;
+ 	  position:fixed;
+      transition: all 0.5s  cubic-bezier(1,.01,.01,.99); /* 0.5 second transition effect to slide in or slide down the overlay (height or width, depending on reveal) */
+	  top:0px;
+	  left:0;
+	  z-index:2;
+	  overflow-x: hidden; /* Disable horizontal scroll */
+	  transition: 0.3s; /* 0.5 second transition effect to slide in or slide down the overlay (height or width, depending on reveal) */
+	  background-color: rgba(128,0,0, 0.9); /* Black w/opacity */
+	  border:0px;	  
+	  margin:auto;
+	  display:flex;
+	  align-items: center;
+	  justify-content: center; }
+	  	
+	  /*exit of player*/			
+	  #exit5 {
+		  position:absolute;
+		  top:5px;
+		  right:5px;
+		  cursor:pointer;
+		  font-size:22px;
+		  color:#000000;
+		  transition:all 0.5s cubic-bezier(1,.01,.01,.99);
+		  }
+
+/*  work viemo videos CSS styles )
+================================================== */		  
+
+		 .vimeoBadge { margin:20px auto; padding: 0; font: 12px futura-pt,sans-serif; width:80%;text-align:center; height:350px; overflow:hidden; }
+		 .vimeoBadge img { border: 0; transform:scale(1,1);  transition: all 0.5s  ease-in-out;  border:5px solid #000000;}
+	  	 .vimeoBadge img:hover { transform:scale(.9,.9);}
+		 .vimeoBadge a, .vimeoBadge a:link, .vimeoBadge a:visited, .vimeoBadge a:active { color: #ffffff; text-decoration: none; cursor: pointer; }
+		 .vimeoBadge a:hover { color:#ffffff; }
+		 .vimeoBadge #vimeo_badge_logo { margin-top:10px; width: 57px; height: 16px; }
+		 .vimeoBadge .credit { font: 12px futura-pt,sans-serif; }
+		 .vimeoBadge .clip { padding:0; float:left; margin:0 40px 40px 0; line-height:0; }
+		 .vimeoBadge.vertical .clip { float: none; }
+		 .vimeoBadge .caption {  display:flex; justify-content: center;align-items: center; border:5px solid #000000; color:#ffffff; font: 12px futura-pt,sans-serif; overflow:hidden; margin:auto; width:100%;  position:absolute; top:0px; bottom:0px; left:-40px; opacity:0;  transition: all 0.5s  ease-in-out; background-color:rgba(128,0,0,0.7); }
+		 .vimeoBadge .caption:hover{opacity:1;  left:0px;}
+		 .vimeoBadge .clear { display: block; clear: both; visibility: hidden; }
+		 .vimeoBadge .s160 { width: 160px; } .vimeoBadge .s80 { width: 80px; } .vimeoBadge .s100 { width: 100px; } .vimeoBadge .s200 { width: 200px; }		  									  
+/* adminrSect
+================================================== */  	
+  #adminSect{
+	  background-color:rgba(128,0,0,1);	
+	  min-height:100vh;
+	  height:100%;
+	  width:100%;
+	  text-align:center;
+	  color:#ffffff;
+	  }
+	  .admin-logo{
+		  width:100%;
+		  margin:20px auto;
+		  }
+		  .admin-logo img{
+			  width:50%;
+			  margin:auto;}
+			  .section{
+				  text-align:center;
+				  overflow:hidden;
+				  }
+				  .section h4{
+					  margin:20px auto;}
+				  form{
+					  margin-top:10px;}
+
+/*  media quries
+================================================== */
+/*media query for 1600px's less screen*/
+@media only screen and (max-width: 1600px) and (min-width: 901px) {
+	
+	
+	
+			h1,.service {
+				font-size:50px;
+				margin:0 100px;}
+	
+	 }
+	 
+/*media query for 900px's less screen*/		 
+@media only screen and (max-width: 900px) and (min-width: 501px) {
+	
+	  .intro{
+		  width:100%;
+		  padding:10px;}
+	
+			h1, .service {
+				font-size:30px;
+				margin:0 10px;}
+		#contactSect{
+			overflow:hidden;
+			}		
+	
+	 }
+	 
+/*media query for 500px's less screen*/		 
+@media only screen and (max-width: 500px) and (min-width: 0px) {
+	
+	  .intro{
+		  width:100%;
+		  padding:10px;}
+	
+			h1, .service {
+				font-size:30px;
+				margin:0 5px;}
+        
+		.work-logo img{
+			width:50%;			
+			}
+		
+		.des-logo img{
+			  width:70%;
+			  }
+			  
+				.service img{
+				    width:80%;
+				    margin:auto;
+					}
+			  
+    
+}	 
